@@ -10,11 +10,14 @@ RUN rpm -Uvh https://yum.puppet.com/puppet5/puppet5-release-el-7.noarch.rpm\
 
 COPY manifests/ /etc/puppetlabs/puppet/manifests/
 COPY Gemfile Puppetfile ./ 
-COPY manifests ./manifests
 
 RUN bundle install
 RUN r10k puppetfile install
 
+
+COPY manifests ./manifests
+RUN puppet apply manifests/init.pp 
+
 EXPOSE 8080
 
-CMD puppet apply manifests/init.pp
+CMD tail -f /dev/null
