@@ -1,20 +1,22 @@
 class { 'nginx':
     service_manage => false,
+    confd_only => true,
 }
 
 nginx::resource::server { 'localhost':
-    www_root => '/usr/share/nginx/html',
+    proxy => 'http://localhost:81',
     listen_port => 8080,
 }
 
-class {'varnish':
-    add_repo => false,
-    varnish_listen_port => 80,
-    varnish_storage_size => '1G',
+$packages = [ 'epel-release', 'varnish' , 'augeas' ]
+
+package { $packages:
+    ensure => 'installed'
 }
 
-varnish::backend { 'nginx':
-    host => 'localhost',
-    port => '8080',
+augeas { "sshd_config":
+    changes => [
+        "set /files/etc/nginx/conf.d/default.conf/server/listen 81",
+    ],
 }
 
