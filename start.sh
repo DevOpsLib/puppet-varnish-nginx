@@ -9,6 +9,7 @@ varnishd -f /etc/varnish/default.vcl -s malloc,2G -a 0.0.0.0:${VARNISH_LISTEN_PO
 echo "Starting NGinx"
 nginx
 
+# Identify that is a container and lock the process if so
 if [ -f /.dockerenv ]; then
     echo "Running in Docker!"
     tail -f /dev/null

@@ -6,9 +6,7 @@ Because Varnish (FREE) only accepts one backend address and I want more control 
 
 All configurations are powered by Puppet Modules and only feel configs were needed to make it works, to test you can use Docker or Vagrant and see how that it goes.
 
-
 Usage with Docker:
-
 ```
 make build-docker
 make run-docker
@@ -17,12 +15,10 @@ make run-docker
 
 
 Usage with Vagrant:
-
 ```
 make build-vagrant
 ```
 [ACCESS HERE](http://localhost:8080)
-
 
 
 Enjoy! :)
