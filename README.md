@@ -1,4 +1,4 @@
-# Lab - Puppet - Varnish - NGinx
+## Puppet - Varnish - NGinx
 
 The basic idea here is to create a solution using Varnish to cache responses from a service running in the [URL defined here](https://github.com/DevOpsLib/puppet-varnish-nginx/blob/master/manifests/init.pp#L7).
 
